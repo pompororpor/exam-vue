@@ -1,11 +1,40 @@
+<html>
+<head>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
 <div id="app">
+    <div v-for="(data, index) in fileds">
+        <input type="text" v-model="data.text">
+        <button @click="deleteFiled(index)">Delete</button>
+    </div>
+    <hr>
+    <button @click="addFiled">Add</button>
 </div>
+
 
 <script src="https://unpkg.com/vue"></script>
 
 <script>
     var app = new Vue({
-        el: '#app'
+        el: '#app',
+        data: {
+            fileds: [
+                { text: '' }
+            ]
+        },
+        methods: {
+            addFiled: function () {
+                this.fileds.push({ text: '' })
+            },
+            deleteFiled: function(index) {
+                this.fileds.splice(index, 1)
+            }
+        }
     });
+	</script>
 
-</script>
+</body>
+</html>
+
+
